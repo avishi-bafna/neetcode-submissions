@@ -1,0 +1,22 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     */
+    singleNumber(nums: number[]): number {
+        let map = new Map<number, number>(), ans=0;
+        for (let i=0; i<nums.length; i++){
+            if(map.has(nums[i])){
+                map.set(nums[i], map.get(nums[i]) + 1)
+            }
+            else{
+                map.set(nums[i], 1)
+            }
+        }
+        for (const [key, value] of map) {
+            if(value == 1)
+                ans = key;
+        }
+        return ans
+    }
+}
